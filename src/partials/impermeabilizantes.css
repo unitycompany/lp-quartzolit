@@ -170,7 +170,7 @@
             & .imper-image{
                 width: 100%;
                 height: 100%;
-                background-image: url('/src/assets/impermeabilizantes/banner.png');
+                background-image: url('../assets/impermeabilizantes/banner.png');
                 background-size: contain;
                 background-position: bottom;
                 background-repeat: no-repeat;
@@ -265,7 +265,7 @@
     width: 100%;
     height: 280px;
     border-radius: 30px;
-    background-image: url('/src/assets/images-banco-de-dados/impermeabilizantes.jpg');
+    background-image: url('../assets/images-banco-de-dados/impermeabilizantes.jpg');
     background-position: center;
     background-size: cover;
     z-index: -2;
@@ -280,7 +280,7 @@
     width: 120%;
     height: 300px;
     border-radius: 30px;
-    background-image: url('/src/assets/backgrounds-recortes/model-1.png');
+    background-image: url('../assets/backgrounds-recortes/model-1.png');
     background-size: contain;
     background-repeat: no-repeat;
     z-index: -1;
