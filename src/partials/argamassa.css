@@ -1,0 +1,292 @@
+.argamassa {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    & .argamassa-background {
+        width: 100%;
+        height: 50%;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-20%);
+
+        --gap: 5em;
+        --line: 1px;
+        --color: rgba(0, 0, 0, 0.15);
+        z-index: -2;
+
+        background-image: linear-gradient(
+            -90deg,
+            transparent calc(var(--gap) - var(--line)),
+            var(--color) calc(var(--gap) - var(--line) + 1px),
+            var(--color) var(--gap)
+            ),
+            linear-gradient(
+            0deg,
+            transparent calc(var(--gap) - var(--line)),
+            var(--color) calc(var(--gap) - var(--line) + 1px),
+            var(--color) var(--gap)
+            );
+
+        background-size: var(--gap) var(--gap);
+
+        &::before {
+            content: "";
+            position: absolute;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        &::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
+            pointer-events: none;
+            z-index: -1;
+        }
+    }
+
+    & .argamassa-content{
+        width: 100%;
+        max-width: 1280px;
+        padding: 5%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 30px;
+
+        & .argamassa-top {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 40px;
+
+            & h1 {
+                font-size: 35px;
+                font-weight: 400;
+
+                & b {
+                    font-weight: 400;
+                    color: var(--color--yellow);
+                }
+            }
+
+            & .argamassa-qualities {
+                display: flex;
+                width: 100%;
+                align-items: center;
+                justify-content: space-between;
+                background-color: var(--color--yellow);
+                border: 2px solid var(--color--black);
+                width: 105%;
+                padding: 30px 40px;
+                border-radius: 40px;
+                position: relative;
+
+                & .argamassa-quality{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 15px;
+                    transition: all .2s ease-in-out;
+
+                    &:hover {
+                        transform: scale(0.95);
+                    }
+
+                    &:hover div {
+                        background-color: var(--color--white);
+                    }
+
+                    &:hover div svg {
+                        fill: var(--color--black);
+                    }
+
+                    &:hover div::before{
+                        background-color: #ffffff80;
+                    }
+
+                    & div {
+                        width: 60px;
+                        height: 60px;
+                        padding: 15px;
+                        border-radius: 50%;
+                        background-color: var(--color--black);
+                        position: relative;
+                        z-index: 1;
+                        transition: all .2s ease-in-out;
+
+                        & svg {
+                            fill: var(--color--white);
+                            transition: all .2s ease-in-out;
+                        }
+
+                        &::before{
+                            content: '';
+                            position: absolute;
+                            border-radius: 50%;
+                            width: 120%;
+                            height: 120%;
+                            top: -10%;
+                            left: -10%;
+                            z-index: -1;
+                            background-color: #00000030;
+                            transition: all .2s ease-in-out;
+                        }
+                    }
+                    
+                    & span {
+                        font-size: 16px;
+                        text-align: center;
+                        line-height: 110%;
+                        color: var(--color--black);
+                    }
+
+                }
+            }
+        }
+
+        & .argamassa-center {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+
+            & .argamassa-left{
+                width: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+
+                & .argamassa-item{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 5px;
+                    position: absolute;
+    
+                    &:nth-child(1){
+                        left: 200px;
+                        top: 120px;
+                    }
+    
+                    &:nth-child(2){
+                        right: 100px;
+                        top: 270px;
+                    }
+    
+                    &:nth-child(3){
+                        left: 300px;
+                        bottom: 120px;
+                    }
+    
+                    &:hover span {
+                        transform: scale(1);
+                    }
+                    
+                    & div {
+                        width: 20px;
+                        height: 20px;
+                        background: var(--color--yellow);
+                        border-radius: 50%;
+                        position: absolute;
+                        z-index: 1;
+                        transition: all .2s ease-in-out;
+    
+                        &:hover {
+                            background-color: var(--color--black);
+                            transform: scale(0.95);
+                        }
+    
+                        &:hover::before{
+                            background-color: var(--color--yellow);
+                        }
+    
+    
+                        &::before{
+                            content: '';
+                            width: 80%;
+                            height: 80%;
+                            top: 10%;
+                            left: 10%;
+                            position: absolute;
+                            z-index: -1;
+                            background-color: var(--color--black);
+                            border-radius: 50%;
+                            transition: all .2s ease-in-out;
+                        }
+                    }
+    
+                    & span {
+                        transform: scale(0);
+                        position: absolute;
+                        bottom: 15px;
+                        font-size: 12px;
+                        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+                        white-space: nowrap;
+                        background-color: #ffffff;
+                        padding: 5px 10px;
+                        backdrop-filter: blur(5px);
+                        transition: all .2s ease-in-out;
+                        border-radius: 20px;
+                    }
+                }
+
+                &::before{
+                    content: '';
+                    top: -20%;
+                    left: -10%;
+                    border-radius: 30px;
+                    width: 90%;
+                    height: 90%;
+                    position: absolute;
+                    background-image: url('/src/assets/images-banco-de-dados/argamassa.jpg');
+                    background-position: center;
+                    background-size: cover;
+                    z-index: -1;   
+                }
+            }
+
+            & .argamassa-right{
+                width: 50%;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                margin-top: -50px;
+                height: 100%;
+                gap: 20px;
+
+                & h2 {
+                    font-size: 28px;
+                    color: var(--color--blue);
+                    font-weight: 400;
+                }
+
+                & p {
+                    font-weight: 300;
+                }
+                
+            }
+        }
+    }
+}

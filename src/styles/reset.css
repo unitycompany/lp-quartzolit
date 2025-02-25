@@ -1,0 +1,99 @@
+/* Reset CSS Completo - Inclui ajustes para iPhone e dispositivos móveis */
+
+/* Box-sizing border-box para todos os elementos */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", serif;
+  }
+  
+  /* Remover estilos padrão de listas */
+  ul, ol {
+    list-style: none;
+  }
+  
+  /* Remover estilos padrão de links */
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  /* Reset de tipografia */
+  html {
+    font-size: 100%;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  body {
+    font-family: sans-serif;
+    line-height: 1.5;
+    background-color: #fff;
+    color: #000;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Imagens responsivas */
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  /* Reset de elementos HTML */
+  button, input, select, textarea {
+    font: inherit;
+    border: none;
+    background: none;
+    outline: none;
+  }
+  
+  /* Melhorando acessibilidade */
+  button {
+    cursor: pointer;
+  }
+  
+  /* Ajustes para iPhone e dispositivos móveis */
+  @media screen and (max-width: 480px) {
+    html {
+      -webkit-text-size-adjust: none;
+    }
+  
+    body {
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+  
+  /* Prevenindo zoom em inputs no iOS */
+  input[type="text"],
+  input[type="email"],
+  input[type="number"],
+  input[type="tel"],
+  input[type="password"],
+  textarea {
+    font-size: 16px;
+  }
+  
+  /* Ajustes para botões em iPhones */
+  input[type="submit"],
+  button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+  
+  /* Resetando tabelas */
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+  
+  /* Ocultar scrollbar no iOS */
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  

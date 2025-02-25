@@ -1,0 +1,323 @@
+.pisos {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    position: relative;
+
+    & .pisos-background {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background-color: #ffffff20;
+
+      
+        --gap: 2em;
+        --line: 1px;
+        --color: rgb(254, 176, 0, 0.25);
+        z-index: -2;
+
+        background-image: linear-gradient(
+            -90deg,
+            transparent calc(var(--gap) - var(--line)),
+            var(--color) calc(var(--gap) - var(--line) + 1px),
+            var(--color) var(--gap)
+            ),
+            linear-gradient(
+            0deg,
+            transparent calc(var(--gap) - var(--line)),
+            var(--color) calc(var(--gap) - var(--line) + 1px),
+            var(--color) var(--gap)
+            );
+
+        background-size: var(--gap) var(--gap);
+
+        &::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
+            pointer-events: none;
+            z-index: -1;
+        }
+    }
+
+    & .pisos-content {
+        max-width: 1280px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        height: auto;
+        position: relative;
+
+        & .pisos-left{
+            padding: 5%;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            flex-direction: column;
+            gap: 50px;
+            width: 50%;
+
+            & h1 {
+                font-size: 35px;
+                font-weight: 400;
+            }
+
+            & .pisos-texts {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: center;
+                gap: 25px;
+                position: relative;
+
+                & .pisos-paragraph{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    justify-content: center;
+                    gap: 10px;
+                    position: relative;
+                    width: 85%;
+
+                    &::before{
+                        content: '';
+                        width: 120%;
+                        height: 200%;
+                        top: -20%;
+                        left: -10%;
+                        position: absolute;
+                        z-index: -1;
+                        background-color: var(--color--yellow);
+                        border-radius: 30px;
+                    }
+                }
+
+                & .pisos-btn {
+                    width: 100%;
+                    display: flex;
+                    align-items: flex-end;
+                    justify-content: flex-end;
+                }
+
+                & .pisos-qualities {
+                    display: flex;
+                    width: 100%;
+                    align-items: center;
+                    justify-content: space-between;
+                    flex-wrap: wrap;
+                    position: relative;
+                    gap: 30px;
+                    padding-left: 20px;
+                    padding-top: 20px;
+
+                    &::before{
+                        content: '';
+                        width: 115%;
+                        height: 135%;
+                        top: -18%;
+                        left: -5%;
+                        position: absolute;
+                        z-index: -1;
+                        background-color: var(--color--black);
+                        border-radius: 30px;
+                    }
+
+                    & .pisos-quality{
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 15px;
+                        transition: all .2s ease-in-out;
+
+                        &:hover {
+                            transform: scale(0.95);
+                        }
+
+                        &:hover div {
+                            background-color: var(--color--yellow);
+                        }
+
+                        & div {
+                            width: 60px;
+                            height: 60px;
+                            padding: 15px;
+                            border-radius: 50%;
+                            background-color: #ffffff;
+                            position: relative;
+                            z-index: 1;
+                            transition: all .2s ease-in-out;
+
+                            & svg {
+                                fill: var(--color--black);
+                            }
+
+                            &::before{
+                                content: '';
+                                position: absolute;
+                                border-radius: 50%;
+                                width: 120%;
+                                height: 120%;
+                                top: -10%;
+                                left: -10%;
+                                z-index: -1;
+                                background-color: #ffffff50;
+                            }
+                        }
+                        
+                        & span {
+                            font-size: 16px;
+                            text-align: center;
+                            line-height: 110%;
+                            color: var(--color--white);
+                        }
+
+                    }
+                }
+            }
+        }
+
+        & .pisos-right{
+            width: 50%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            position: relative;
+            padding-right: 5%;
+            z-index: 1;
+
+            &::before{
+                content: '';
+                width: 70%;
+                height: 70%;
+                top: 20px;
+                right: -5%;
+                z-index: -1;
+                position: absolute;
+                background-image: url('/src/assets/images-banco-de-dados/pisos.jpg');
+                background-position: center;
+                background-size: cover;
+                border-radius: 30px;
+
+            }
+
+            & .pisos-left{
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+
+                & .pisos-item{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 5px;
+                    position: absolute;
+    
+                    &:nth-child(1){
+                        left: 150px;
+                        top: 160px;
+                    }
+    
+                    &:nth-child(2){
+                        right: 150px;
+                        top: 250px;
+                    }
+    
+                    &:nth-child(3){
+                        left: 320px;
+                        bottom: 270px;
+                    }
+
+                    &:nth-child(4){
+                        left: 200px;
+                        bottom: 200px;
+                    }
+    
+                    &:hover span {
+                        transform: scale(1);
+                    }
+                    
+                    & div {
+                        width: 20px;
+                        height: 20px;
+                        background: var(--color--yellow);
+                        border-radius: 50%;
+                        position: absolute;
+                        z-index: 1;
+                        transition: all .2s ease-in-out;
+    
+                        &:hover {
+                            background-color: var(--color--black);
+                            transform: scale(0.95);
+                        }
+    
+                        &:hover::before{
+                            background-color: var(--color--yellow);
+                        }
+    
+    
+                        &::before{
+                            content: '';
+                            width: 80%;
+                            height: 80%;
+                            top: 10%;
+                            left: 10%;
+                            position: absolute;
+                            z-index: -1;
+                            background-color: var(--color--black);
+                            border-radius: 50%;
+                            transition: all .2s ease-in-out;
+                        }
+                    }
+    
+                    & span {
+                        transform: scale(0);
+                        position: absolute;
+                        bottom: 15px;
+                        font-size: 12px;
+                        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+                        white-space: nowrap;
+                        background-color: #ffffff;
+                        padding: 5px 10px;
+                        backdrop-filter: blur(5px);
+                        transition: all .2s ease-in-out;
+                        border-radius: 20px;
+                    }
+                }
+            }
+
+            & .pisos-logo-absolute {
+                position: absolute;
+                top: 0;
+                right: 5%;
+                background-color: var(--color--white);
+                padding: 5px;
+                border-radius: 10px;
+            }
+
+        }
+        
+    }
+}

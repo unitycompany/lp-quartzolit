@@ -1,0 +1,57 @@
+.button-type-cards3 {
+    padding: 10px 5px 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    height: 50px;
+    border-radius: 500px;
+    background: var(--color--white);
+    position: relative;
+    transition: all .3s ease!important;
+    border: 1px solid var(--color--black);
+    overflow: hidden;
+
+    &::before{
+        content: '';
+        position: absolute;
+        width: 0%;
+        top: 0;
+        left: 0;
+        height: 100%;
+        border-radius: 500px;
+        background: var(--color--black);
+        transition: all .3s ease!important;
+    }
+
+    &:hover::before{
+        width: 100%;
+    }
+
+    &:hover span {
+        color: var(--color--white);
+    }
+
+    &:hover svg {
+        transform: rotate(-45deg);
+    }
+
+    & span {
+        white-space: nowrap;
+        position: relative;
+        z-index: 2;
+        transition: all .3s ease!important;
+        color: var(--color--black);
+    }
+
+    & svg {
+        width: 20px;
+        background-color: var(--color--yellow);
+        padding: 10px;
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        position: relative;
+        transition: all .3s ease!important;
+    }
+}

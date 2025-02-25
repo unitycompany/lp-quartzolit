@@ -1,0 +1,332 @@
+.adesivos {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex-direction: column;
+
+    &::after{
+        content: '';
+        width: 100%;
+        height: 90%;
+        bottom: -10%;
+        left: 0;
+        background-image: url('/src/assets/images-banco-de-dados/adesivos.png');
+        background-position: center;
+        border-image: fill 0 linear-gradient(#0001, #000);
+        background-size: cover;
+        position: absolute;
+        z-index: -5;
+    }
+    
+
+    & .adesivos-background {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+    }
+
+    & .adesivos-top{
+        width: 100%;
+        max-width: 1280px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 5%;
+
+        & h1 {
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            font-weight: 400;
+            flex-wrap: wrap;
+            font-size: 30px;
+            cursor: default;
+
+            & span {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 6px;
+                line-height: 120%;
+                color: var(--color--black);
+                opacity: 0.95;
+
+                & img:nth-child(1) {
+                    width: 45px;
+                }
+            }
+
+            & span:nth-child(2){
+                & img {
+                    width: 120px;
+                }
+            }
+        }
+    }
+
+    & .adesivos-content{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-width: 1280px;
+        gap: 50px;
+        padding: 2.5% 5%;
+        position: relative;
+
+        &::before{
+            content: '';
+            width: 30%;
+            height: 90%;
+            top: -25%;
+            right: -5%;
+            z-index: -1;
+            position: absolute;
+            background-image: url('/src/assets/backgrounds-recortes/model-3.png');
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        & .adesivos-left {
+            width: 50%;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 20px;
+            flex-direction: column;
+
+            & h1{
+                font-size: 35px;
+                font-weight: 400;
+                white-space: nowrap;
+                padding-bottom: 20px;
+                color: var(--color--white);
+
+                & b {
+                    font-weight: 400;
+                    color: var(--color--yellow);
+                }
+            }
+
+            & .adesivos-qualities {
+                display: flex;
+                width: 100%;
+                align-items: center;
+                justify-content: space-between;
+                position: relative;
+                flex-wrap: wrap;
+                gap: 20px;
+                padding: 30px;
+
+                &::before{
+                    content: '';
+                    width: 100%;
+                    height: 120%;
+                    position: absolute;
+                    top: -5%;
+                    left: 0%;
+                    z-index: -1;
+                    background-color: var(--color--blue);
+                    padding: 20px;
+                    border-radius: 30px;
+                }
+
+                & .adesivos-quality{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: column;
+                    gap: 15px;
+                    transition: all .2s ease-in-out;
+                    width: 25%;
+
+                    &:hover {
+                        transform: scale(0.95);
+                    }
+
+                    &:hover div {
+                        background-color: var(--color--yellow);
+                    }
+
+                    & div {
+                        width: 60px;
+                        height: 60px;
+                        padding: 15px;
+                        border-radius: 50%;
+                        background-color: #ffffff;
+                        position: relative;
+                        z-index: 1;
+                        transition: all .2s ease-in-out;
+
+                        & svg {
+                            fill: var(--color--blue);
+                        }
+
+                        &::before{
+                            content: '';
+                            position: absolute;
+                            border-radius: 50%;
+                            width: 120%;
+                            height: 120%;
+                            top: -10%;
+                            left: -10%;
+                            z-index: -1;
+                            background-color: #ffffff50;
+                        }
+                    }
+                    
+                    & span {
+                        font-size: 16px;
+                        text-align: center;
+                        line-height: 110%;
+                        color: var(--color--white);
+                    }
+
+                }
+            }
+
+            & .adesivos-texts{
+                position: relative;
+                width: 100%;
+
+                &::before{
+                    content: '';
+                    width: 115%;
+                    height: 180%;
+                    position: absolute;
+                    top: -55%;
+                    left: -5%;
+                    z-index: -2;
+                    background-image: url('/src/assets/images-banco-de-dados/adesivo.png');
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    padding: 20px;
+                    border-radius: 30px;
+                }
+                
+                & p{
+                    display: flex;
+                    align-items: flex-start;
+                    justify-content: center;
+                    gap: 15px;
+                    flex-direction: column;
+    
+                }
+            }
+            
+            
+        }
+        
+
+        & .adesivos-right{
+            width: 50%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+
+            & .adesivos-logo-absolute {
+                position: absolute;
+                top: 10%;
+                right: 12.5%;
+                background-color: #000;
+                padding: 5px;
+                border-radius: 10px;
+            }
+
+            & .adesivos-left2{
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                position: relative;
+                height: 700px;
+
+                & img{
+                    height: 90%;
+                    object-fit: contain;
+                    object-position: bottom;
+                }
+
+                & .adesivos-item{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 5px;
+                    position: absolute;
+    
+                    &:nth-child(1){
+                        left: 150px;
+                        top: 330px;
+                    }
+    
+                    &:nth-child(2){
+                        right: 150px;
+                        bottom: 300px;
+                    }
+    
+                    &:nth-child(3){
+                        left: 295px;
+                        bottom: 180px;
+                    }
+    
+                    &:hover span {
+                        transform: scale(1);
+                    }
+                    
+                    & div {
+                        width: 20px;
+                        height: 20px;
+                        background: var(--color--yellow);
+                        border-radius: 50%;
+                        position: absolute;
+                        z-index: 1;
+                        transition: all .2s ease-in-out;
+    
+                        &:hover {
+                            background-color: var(--color--black);
+                            transform: scale(0.95);
+                        }
+    
+                        &:hover::before{
+                            background-color: var(--color--yellow);
+                        }
+    
+    
+                        &::before{
+                            content: '';
+                            width: 80%;
+                            height: 80%;
+                            top: 10%;
+                            left: 10%;
+                            position: absolute;
+                            z-index: -1;
+                            background-color: var(--color--black);
+                            border-radius: 50%;
+                            transition: all .2s ease-in-out;
+                        }
+                    }
+    
+                    & span {
+                        transform: scale(0);
+                        position: absolute;
+                        bottom: 15px;
+                        font-size: 12px;
+                        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+                        white-space: nowrap;
+                        background-color: #ffffff;
+                        padding: 5px 10px;
+                        backdrop-filter: blur(5px);
+                        transition: all .2s ease-in-out;
+                        border-radius: 20px;
+                    }
+                }
+            }
+        }
+    }
+}
