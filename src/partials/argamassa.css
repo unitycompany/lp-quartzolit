@@ -77,6 +77,11 @@
             & h1 {
                 font-size: 35px;
                 font-weight: 400;
+                line-height: 110%;
+
+                @media (max-width: 768px) {
+                    font-size: 30px;
+                }
 
                 & b {
                     font-weight: 400;
@@ -96,6 +101,15 @@
                 border-radius: 40px;
                 position: relative;
 
+                @media (max-width: 768px) {
+                    flex-wrap: wrap;
+                    width: 105%;
+                    right: -5%;
+                    gap: 10px;
+                    padding: 30px 20px;
+                    border-radius: 30px 0 0 30px;
+                }
+
                 & .argamassa-quality{
                     display: flex;
                     flex-direction: column;
@@ -103,6 +117,14 @@
                     justify-content: center;
                     gap: 15px;
                     transition: all .2s ease-in-out;
+
+                    @media (max-width: 768px) {
+                        width: 30%;
+
+                        &:nth-child(n + 7){
+                            display: none;
+                        }
+                    }
 
                     &:hover {
                         transform: scale(0.95);
@@ -130,6 +152,12 @@
                         z-index: 1;
                         transition: all .2s ease-in-out;
 
+                        @media (max-width: 768px) {
+                            width: 50px;
+                            height: 50px;
+                            padding: 10px;
+                        }
+
                         & svg {
                             fill: var(--color--white);
                             transition: all .2s ease-in-out;
@@ -154,6 +182,10 @@
                         text-align: center;
                         line-height: 110%;
                         color: var(--color--black);
+
+                        @media (max-width: 768px) {
+                            font-size: 12px;
+                        }
                     }
 
                 }
@@ -169,12 +201,20 @@
             justify-content: space-between;
             gap: 50px;
 
+            @media (max-width: 768px) {
+                flex-direction: column;    
+            }
+
             & .argamassa-left{
                 width: 50%;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 position: relative;
+
+                @media (max-width: 768px) {
+                    width: 100%;
+                }
 
                 & .argamassa-item{
                     display: flex;
@@ -185,18 +225,18 @@
                     position: absolute;
     
                     &:nth-child(1){
-                        left: 200px;
-                        top: 120px;
+                        left: 80px;
+                        top: 80px;
                     }
     
                     &:nth-child(2){
-                        right: 100px;
-                        top: 270px;
+                        right: 130px;
+                        top: 110px;
                     }
     
                     &:nth-child(3){
-                        left: 300px;
-                        bottom: 120px;
+                        left: 180px;
+                        bottom: 70px;
                     }
     
                     &:hover span {
@@ -263,6 +303,12 @@
                     background-position: center;
                     background-size: cover;
                     z-index: -1;   
+
+                    @media (max-width: 768px) {
+                        height: 110%;
+                        top: -50%;
+                        border-radius: 0 30px 30px 0;
+                    }
                 }
             }
 
@@ -276,10 +322,25 @@
                 height: 100%;
                 gap: 20px;
 
+                @media (max-width: 768px) {
+                    width: 100%;
+                    gap: 15px;
+                }
+
                 & h2 {
                     font-size: 28px;
                     color: var(--color--blue);
                     font-weight: 400;
+                }
+
+                & div {
+                    @media (max-width: 768px) {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-start;
+                        justify-content: center;
+                        gap: 15px;
+                    }
                 }
 
                 & p {
