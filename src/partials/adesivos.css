@@ -72,7 +72,7 @@
         justify-content: center;
         max-width: 1280px;
         gap: 50px;
-        padding: 2.5% 5%;
+        padding: 2.5% 5% 10% 5%;
         position: relative;
 
         &::before{
