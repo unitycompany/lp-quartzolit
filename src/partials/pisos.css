@@ -213,7 +213,7 @@
                 right: -5%;
                 z-index: -1;
                 position: absolute;
-                background-image: url('/src/assets/images-banco-de-dados/pisos.jpg');
+                background-image: url('../assets/images-banco-de-dados/pisos.jpg');
                 background-position: center;
                 background-size: cover;
                 border-radius: 30px;

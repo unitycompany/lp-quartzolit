@@ -28,7 +28,7 @@
             top: 0;
             left: 0;
             position: absolute;
-            background-image: url('/src/assets/backgrounds-recortes/model-4.png');
+            background-image: url('../assets/backgrounds-recortes/model-4.png');
             background-position: center;
             background-repeat: no-repeat;
             background-size: contain;

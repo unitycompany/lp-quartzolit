@@ -259,7 +259,7 @@
                     width: 90%;
                     height: 90%;
                     position: absolute;
-                    background-image: url('/src/assets/images-banco-de-dados/argamassa.jpg');
+                    background-image: url('../assets/images-banco-de-dados/argamassa.jpg');
                     background-position: center;
                     background-size: cover;
                     z-index: -1;   

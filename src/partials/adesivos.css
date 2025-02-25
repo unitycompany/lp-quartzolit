@@ -12,7 +12,7 @@
         height: 90%;
         bottom: -10%;
         left: 0;
-        background-image: url('/src/assets/images-banco-de-dados/adesivos.png');
+        background-image: url('../assets/images-banco-de-dados/adesivos.png');
         background-position: center;
         border-image: fill 0 linear-gradient(#0001, #000);
         background-size: cover;
@@ -83,7 +83,7 @@
             right: -5%;
             z-index: -1;
             position: absolute;
-            background-image: url('/src/assets/backgrounds-recortes/model-3.png');
+            background-image: url('../assets/backgrounds-recortes/model-3.png');
             background-position: center;
             background-size: contain;
             background-repeat: no-repeat;
@@ -199,7 +199,7 @@
                     top: -55%;
                     left: -5%;
                     z-index: -2;
-                    background-image: url('/src/assets/images-banco-de-dados/adesivo.png');
+                    background-image: url('../assets/images-banco-de-dados/adesivo.png');
                     background-position: center;
                     background-repeat: no-repeat;
                     background-size: cover;
