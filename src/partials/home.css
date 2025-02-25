@@ -29,6 +29,30 @@
 
         & img {
             width: 220px;
+
+            @media (max-width: 768px) {
+                width: 200px;
+            }
+        }
+
+        & span {
+            display: none;
+
+            @media (max-width: 768px) {
+                display: block;
+                font-size: 25px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+            }
+        }
+        
+        & button {
+            @media (max-width: 768px) {
+                display: none;
+            }
         }
 
         & label {
@@ -41,6 +65,10 @@
             gap: 20px;
             border-radius: 30px;
             background-color: var(--color--gray);
+
+            @media (max-width: 768px) {
+                display: none;
+            }
 
             & input {
                 width: 100%;
@@ -77,6 +105,10 @@
         justify-content: center;
         padding: 3%;
 
+        @media (max-width: 768px) {
+            padding: 5%;     
+        }
+
         & h1 {
             display: flex;
             align-items: center;
@@ -85,6 +117,10 @@
             flex-wrap: wrap;
             font-size: 30px;
             cursor: default;
+
+            @media (max-width: 768px) {
+                font-size: 24px;    
+            }
 
             & span {
                 display: flex;
@@ -97,12 +133,20 @@
 
                 & img:nth-child(1) {
                     width: 45px;
+
+                    @media (max-width: 768px) {
+                        width: 40px;
+                    }
                 }
             }
 
             & span:nth-child(2){
                 & img {
                     width: 120px;
+
+                    @media (max-width: 768px) {
+                        width: 100px;
+                    }
                 }
             }
         }

@@ -7,6 +7,10 @@
     top: 0;
     z-index: 1000;
     transition: opacity 0.6s ease-in-out;
+
+    @media (max-width: 768px) {
+      position: relative;            
+    }
   
     & .category-background {
       content: '';
@@ -26,6 +30,11 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+
+      @media (max-width: 768px) {
+        flex-direction: column;
+        padding: 0;          
+      }
   
       .category-item {
         display: flex;
@@ -39,6 +48,13 @@
         width: 100%;
         cursor: pointer;
         overflow: hidden;
+
+        @media (max-width: 768px) {
+          width: 100%;
+          padding: 10px 0;
+          height: 50px!important;        
+          flex-direction: row;
+        }
   
         &:hover,
         &.active {
@@ -64,6 +80,10 @@
         & svg {
           width: 60px;
           fill: #00000080;
+
+          @media (max-width: 768px) {
+            width: 30px;      
+          }
         }
   
         & span {
@@ -71,6 +91,12 @@
           color: #00000080;
           text-align: center;
           line-height: 100%;
+
+          @media (max-width: 768px) {
+            font-size: 12px; 
+            width: 80%;
+            text-align: left;
+          }
         }
       }
     }
