@@ -21,6 +21,10 @@
         border-radius: 30px;
         position: relative;
 
+        @media (max-width: 768px) {
+
+        }
+
         &::before{
             content: '';
             width: 1000px;
@@ -33,6 +37,18 @@
             background-repeat: no-repeat;
             background-size: contain;
             z-index: -1;
+
+            @media (max-width: 768px) {
+                width: 100%;
+                background-image: none;
+                background-color: #000;
+            }
+        }
+
+        & button {
+            @media (max-width: 768px) {
+                display: none;
+            }
         }
 
         & h1 {
@@ -41,6 +57,10 @@
             flex-direction: column;
             justify-content: center;
             color: var(--color--white);
+
+            @media (max-width: 768px) {
+                padding: 2.5% 0%;
+            }
 
             & span {
                 display: flex;
@@ -51,8 +71,18 @@
                 font-size: 35px;
                 line-height: 120%;
 
+                @media (max-width: 768px) {
+                    font-size: 20px;
+                    line-height: 110%;
+                    gap: 5px;
+                }
+
                 & img {
                     width: 180px;
+
+                    @media (max-width: 768px) {
+                        width: 80px;
+                    }
                 }
             }
         }
@@ -67,6 +97,11 @@
         padding: 5%;
         gap: 50px;
 
+        @media (max-width: 768px) {
+            flex-direction: column;    
+            gap: 25px;
+        }
+
         & .footer-left {
             display: flex;
             flex-direction: column;
@@ -75,9 +110,20 @@
             gap: 15px;
             width: 50%;
 
+            @media (max-width: 768px) {
+                width: 100%;
+                padding-bottom: 20px;
+                border-bottom: 1px solid var(--color--black);
+            }
+
             & h1 {
                 font-size: 35px;
                 font-weight: 400;
+
+                @media (max-width: 768px) {
+                    font-size: 30px;
+                    line-height: 110%;
+                }
 
                 & b {
                     color: var(--color--yellow);
@@ -93,6 +139,10 @@
             align-items: flex-start;
             justify-content: center;
             gap: 20px;
+
+            @media (max-width: 768px) {
+                width: 100%;
+            }
 
             & h2 {
                 font-size: 30px;
@@ -160,8 +210,19 @@
         justify-content: space-between;
         padding: 1% 0%;
 
+        @media (max-width: 768px) {
+            flex-direction: column;    
+            gap: 20px;
+            padding: 3% 5%;
+        }
+
         & p {
             font-weight: 300;
+
+            @media (max-width: 768px) {
+                text-align: center;
+                line-height: 120%;
+            }
 
             & a {
                 font-weight: 500;
