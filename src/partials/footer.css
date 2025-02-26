@@ -162,6 +162,7 @@
 
             @media (max-width: 768px) {
                 width: 100%;
+                padding: 5% 0;
             }
 
             & h2 {
@@ -183,6 +184,10 @@
                     width: 100%;
                     border-radius: 15px;
                     position: relative;
+
+                    @media (max-width: 768px) {
+                        padding: 12px;
+                    }
 
                     & span {
                         position: absolute;
@@ -233,7 +238,8 @@
         @media (max-width: 768px) {
             flex-direction: column;    
             gap: 20px;
-            padding: 3% 5%;
+            padding: 2.5% 5%;
+            border-top: none;
         }
 
         & p {
@@ -242,6 +248,7 @@
             @media (max-width: 768px) {
                 text-align: center;
                 line-height: 120%;
+                font-size: 14px;
             }
 
             & a {
