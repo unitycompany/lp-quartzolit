@@ -10,6 +10,7 @@
     position: relative;
     transition: all .3s ease!important;
     overflow: hidden;
+    color: var(--color--black);
 
     &::before{
         content: '';

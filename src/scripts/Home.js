@@ -23,3 +23,26 @@ document.getElementById("prevSlide").addEventListener("click", function () {
 document.getElementById("nextSlide").addEventListener("click", function () {
     swiper.slideNext();
 });
+
+
+// Selecionando os elementos
+const openSearch = document.getElementById("openSearch");
+const searchModal = document.getElementById("searchModal");
+const closeSearch = document.getElementById("closeSearch");
+
+// Evento para abrir o modal
+openSearch.addEventListener("click", () => {
+    searchModal.classList.add("show");
+});
+
+// Evento para fechar o modal
+closeSearch.addEventListener("click", () => {
+    searchModal.classList.remove("show");
+});
+
+// Fechar modal ao clicar fora da caixa de busca
+searchModal.addEventListener("click", (e) => {
+    if (e.target === searchModal) {
+        searchModal.classList.remove("show");
+    }
+});
