@@ -56,6 +56,9 @@
           padding: 10px 0;
           height: 50px!important;        
           flex-direction: row;
+          overflow: auto;
+          position: relative;
+          z-index: 100;
         }
   
         &:hover,
