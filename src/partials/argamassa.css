@@ -223,6 +223,7 @@
                     justify-content: center;
                     gap: 5px;
                     position: absolute;
+                    z-index: 1;
     
                     &:nth-child(1){
                         left: 80px;

@@ -117,10 +117,13 @@
                     width: 120%;
                     height: 120%;
                     left: -10%;
-                    top: -10%;
+                    top: -12.5%;
                     position: absolute;
                     z-index: -1;
-                    background-color: #000;
+                    background-image: url('../assets/images-banco-de-dados/impermeabilizantes.jpg');
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
                 }
             }
 
@@ -131,7 +134,7 @@
 
             & p {
                 @media (max-width: 768px) {
-                    color: var(--color--white);
+                    color: var(--color--black);
                 }
             }
 
@@ -142,12 +145,16 @@
                 @media (max-width: 768px) {
                     font-size: 30px;
                     line-height: 110%;
-                    color: var(--color--white);
+                    color: var(--color--black);
                 }
 
                 & b {
                     color: var(--color--yellow);
                     font-weight: 400;
+
+                    @media (max-width: 768px) {
+                        color: #000;
+                    }
                 }
             }
         }
@@ -187,6 +194,7 @@
 
                     @media (max-width: 768px) {
                         padding: 12px;
+                        border-radius: 7.5px;
                     }
 
                     & span {
@@ -221,6 +229,13 @@
                     border: 2px solid var(--color--black);
                     font-size: 18px;
                     font-weight: 400;
+
+                    @media (max-width: 768px) {
+                        border-radius: 10px;
+                        border: 1px solid var(--color--black);
+                        font-weight: 300;
+                        margin-top: -10px;
+                    }
                 }
             }
         }
@@ -237,7 +252,7 @@
 
         @media (max-width: 768px) {
             flex-direction: column;    
-            gap: 20px;
+            gap: 10px;
             padding: 2.5% 5%;
             border-top: none;
         }
@@ -248,12 +263,16 @@
             @media (max-width: 768px) {
                 text-align: center;
                 line-height: 120%;
-                font-size: 14px;
+                font-size: 12px;
             }
 
             & a {
                 font-weight: 500;
                 color: var(--color--black);
+
+                @media (max-width: 768px) {
+                    font-size: 12px;
+                }
             }
         }
     }
