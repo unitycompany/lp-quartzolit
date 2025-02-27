@@ -8,17 +8,44 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log("Script carregado corretamente.");
 
     // Captura todos os botões que direcionam para o formulário
+    function scrollToBottom() {
+        const startPosition = window.scrollY;
+        const targetPosition = document.documentElement.scrollHeight - window.innerHeight; // Final da página
+        const distance = targetPosition - startPosition;
+        const duration = 600; // Tempo total da animação (ajuste conforme necessário)
+        let startTime = null;
+    
+        function animation(currentTime) {
+            if (startTime === null) startTime = currentTime;
+            const elapsedTime = currentTime - startTime;
+            const progress = Math.min(elapsedTime / duration, 1);
+    
+            // Função de suavização easeOutQuad para uma rolagem mais natural
+            const ease = progress * (2 - progress);
+            window.scrollTo(0, startPosition + (distance * ease));
+    
+            if (elapsedTime < duration) {
+                requestAnimationFrame(animation);
+            }
+        }
+    
+        requestAnimationFrame(animation);
+    }
+    
+    // Aplica a rolagem suave ao clicar nos botões
     document.querySelectorAll('[data-target="contactForm"]').forEach(button => {
         button.addEventListener('click', function (event) {
             event.preventDefault();
-            clickedButtonId = this.id || 'botao-sem-id'; // Sempre armazena o último botão clicado
-            
+            clickedButtonId = this.id || 'botao-sem-id';
             console.log("Botão clicado:", clickedButtonId);
-
-            // Faz o scroll suave até o formulário
-            document.querySelector('#contactForm').scrollIntoView({ behavior: 'smooth' });
+    
+            // Chama a função que rola até o final exato da página
+            scrollToBottom();
         });
     });
+    
+    
+    
 
     // Adiciona máscara visual ao campo de telefone
     phoneInput.addEventListener("input", function () {
