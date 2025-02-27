@@ -679,10 +679,14 @@
             const submitButton = formElement.querySelector("button[type='submit']");
             let clickedButtonId = ''; // Variável para armazenar o ID do botão clicado
         
-            // Adiciona evento de clique a todos os botões que direcionam ao formulário
+            // Captura todos os botões que direcionam para o formulário
             document.querySelectorAll('[data-target="contactForm"]').forEach(button => {
-                button.addEventListener('click', function () {
-                    clickedButtonId = this.id || 'botao-sem-id'; // Define o ID do botão ou um padrão caso não tenha ID
+                button.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    clickedButtonId = this.id || 'botao-sem-id'; // Guarda o ID do botão
+                    
+                    // Faz o scroll suave até o formulário
+                    document.querySelector('#contactForm').scrollIntoView({ behavior: 'smooth' });
                 });
             });
         
@@ -720,7 +724,7 @@
                     },
                     leads: [
                         {
-                            id: `FORMULARIO - ${clickedButtonId} - LP QUARTZOLIT - ${name} `,
+                            id: `FORMULARIO - ${clickedButtonId} - QUARTZOLIT - ${name}`,
                             user: name,
                             email: email,
                             name: name,
@@ -793,9 +797,8 @@
                 }
             }
         });
-        </script>
+    </script>
         
-
     <script>
         AOS.init({
         duration: 1200, 
