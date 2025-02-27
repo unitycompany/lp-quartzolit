@@ -674,6 +674,129 @@
     <!-- Scripts -->
 
     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const formElement = document.querySelector('#contactForm');
+            const submitButton = formElement.querySelector("button[type='submit']");
+            let clickedButtonId = ''; // Variável para armazenar o ID do botão clicado
+        
+            // Adiciona evento de clique a todos os botões que direcionam ao formulário
+            document.querySelectorAll('[data-target="contactForm"]').forEach(button => {
+                button.addEventListener('click', function () {
+                    clickedButtonId = this.id || 'botao-sem-id'; // Define o ID do botão ou um padrão caso não tenha ID
+                });
+            });
+        
+            formElement.addEventListener('submit', function (event) {
+                event.preventDefault();
+        
+                const name = formElement.querySelector('#name').value.trim();
+                const email = formElement.querySelector('#email').value.trim();
+                const whatsapp = formElement.querySelector('#tel').value.trim();
+        
+                // Validação básica
+                if (!name || !email || !whatsapp) {
+                    alert("Por favor, preencha todos os campos corretamente.");
+                    return;
+                }
+        
+                // Desativar o botão de envio
+                submitButton.disabled = true;
+        
+                // Exibir overlay de carregamento (caso queira colocar)
+                displayLoadingOverlay(true);
+        
+                // Captura de UTM
+                const utms = getUTMs();
+                const pageReferrer = window.location.href || 'URL não encontrada';
+        
+                // Montagem do payload
+                const payload = {
+                    rules: {
+                        update: "false",
+                        filter_status_update: "open",
+                        equal_pipeline: "true",
+                        status: "open",
+                        validate_cpf: "false",
+                    },
+                    leads: [
+                        {
+                            id: `FORMULARIO - ${clickedButtonId} - LP QUARTZOLIT - ${name} `,
+                            user: name,
+                            email: email,
+                            name: name,
+                            personal_phone: whatsapp,
+                            mobile_phone: whatsapp,
+                            last_conversion: {
+                                source: `FORMULARIO - ${clickedButtonId} - QUARTZOLIT`
+                            },
+                            custom_fields: {
+                                uniqueId: generateUniqueId(),
+                                utm_source: utms.utm_source || "",
+                                utm_medium: utms.utm_medium || "",
+                                utm_campaign: utms.utm_campaign || "",
+                                utm_content: utms.utm_content || "",
+                                utm_term: utms.utm_term || "",
+                                page_referrer: pageReferrer,
+                                button_id: clickedButtonId // Inclui o ID do botão que acionou o formulário
+                            }
+                        }
+                    ]
+                };
+        
+                // Envio via fetch
+                fetch('https://app.pipe.run/webservice/integradorJson?hash=1e28b707-3c02-4393-bb9d-d3826b060dcd', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Success:', data);
+                    displayLoadingOverlay(false);
+                    alert('Formulário enviado com sucesso!');
+                    formElement.reset();
+                    clickedButtonId = ''; // Reseta o ID do botão após envio
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                    alert('Houve um erro ao enviar o formulário.');
+                })
+                .finally(() => {
+                    // Reativar o botão de envio
+                    submitButton.disabled = false;
+                    displayLoadingOverlay(false);
+                });
+            });
+        
+            function generateUniqueId() {
+                return new Date().getTime().toString();
+            }
+        
+            function getUTMs() {
+                const urlParams = new URLSearchParams(window.location.search);
+                return {
+                    utm_source: urlParams.get('utm_source'),
+                    utm_medium: urlParams.get('utm_medium'),
+                    utm_campaign: urlParams.get('utm_campaign'),
+                    utm_content: urlParams.get('utm_content'),
+                    utm_term: urlParams.get('utm_term'),
+                };
+            }
+        
+            function displayLoadingOverlay(show) {
+                if (show) {
+                    console.log("Mostrando overlay de carregamento...");
+                } else {
+                    console.log("Removendo overlay de carregamento...");
+                }
+            }
+        });
+        </script>
+        
+
+    <script>
         AOS.init({
         duration: 1200, 
         offset: 0,
