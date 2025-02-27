@@ -1,10 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
   const categoryContainer = document.querySelector('.category');
 
-  // Verifica se o container existe antes de adicionar o evento
   if (categoryContainer) {
       categoryContainer.addEventListener('click', function (event) {
-          let item = event.target.closest('.category-item'); // Encontra o item mais próximo
+          let item = event.target.closest('.category-item');
 
           if (item) {
               document.querySelectorAll('.category-item').forEach(el => el.classList.remove('active'));
@@ -14,14 +13,20 @@ document.addEventListener('DOMContentLoaded', function () {
               if (targetId) {
                   const targetSection = document.getElementById(targetId);
                   if (targetSection) {
-                      targetSection.scrollIntoView({ behavior: 'smooth' });
+                      setTimeout(() => {
+                          targetSection.scrollIntoView({ 
+                              behavior: 'smooth', 
+                              block: 'start', 
+                              inline: 'nearest'
+                          });
+                      }, 100); // Adicionando um pequeno delay
                   }
               }
           }
       });
   }
 
-  // Intersection Observer: ativa a categoria quando 60% da seção estiver visível
+  // Intersection Observer para ativar a categoria quando a seção estiver visível
   const sections = document.querySelectorAll('section');
   const categoryItems = document.querySelectorAll('.category-item');
   const observerOptions = { threshold: 0.6 };
@@ -41,4 +46,35 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const observer = new IntersectionObserver(observerCallback, observerOptions);
   sections.forEach(section => observer.observe(section));
+
+  // Verificar compatibilidade de scroll no iOS
+  function isSmoothScrollSupported() {
+      let isSupported = false;
+      try {
+          document.createElement("div").scrollIntoView({ behavior: "smooth" });
+          isSupported = true;
+      } catch (err) {
+          isSupported = false;
+      }
+      return isSupported;
+  }
+
+  if (!isSmoothScrollSupported()) {
+      console.warn("Smooth Scroll não suportado, ativando fallback");
+      categoryContainer.addEventListener('click', function (event) {
+          let item = event.target.closest('.category-item');
+          if (item) {
+              const targetId = item.getAttribute('data-target');
+              if (targetId) {
+                  const targetSection = document.getElementById(targetId);
+                  if (targetSection) {
+                      window.scrollTo({
+                          top: targetSection.offsetTop - 20, // Ajuste para compensar header sticky
+                          behavior: 'auto'
+                      });
+                  }
+              }
+          }
+      });
+  }
 });
