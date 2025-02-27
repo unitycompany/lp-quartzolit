@@ -1,109 +1,92 @@
 .category {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    transition: opacity 0.6s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: opacity 0.6s ease-in-out;
 
-    @media (max-width: 768px) {
-      position: relative;            
-    }
-  
-    & .category-background {
-      content: '';
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      left: 0;
-      top: 0;
-      background-color: var(--color--gray);
-      z-index: -1;
-    }
-  
-    & .category-content {
-      width: 100%;
-      max-width: 1280px;
-      padding: 0 5%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+  @media (max-width: 768px) {
       position: relative;
-      z-index: 2;
-
-      @media (max-width: 768px) {
-        flex-direction: column;
-        padding: 0;          
-      }
-  
-      .category-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 20px;
-        padding: 30px 20px;
-        border: 1px solid #00000020;
-        transition: border 0.3s ease-in-out, background 0.2s ease-in-out;
-        width: 100%;
-        cursor: pointer;
-        overflow: hidden;
-
-        @media (max-width: 768px) {
-          width: 100%;
-          padding: 10px 0;
-          height: 50px!important;        
-          flex-direction: row;
-          overflow: auto;
-          position: relative;
-          z-index: 100;
-        }
-  
-        &:hover,
-        &.active {
-          background-color: var(--color--yellow);
-          border: 1px solid #000;
-        }
-  
-        &:hover svg,
-        &.active svg {
-          fill: #000000;
-        }
-  
-        &:hover span,
-        &.active span {
-          color: #000000;
-        }
-  
-        &:active {
-          background-color: var(--color--yellow);
-          border: 1px solid transparent;
-        }
-  
-        & svg {
-          width: 60px;
-          fill: #00000080;
-
-          @media (max-width: 768px) {
-            width: 30px;      
-          }
-        }
-  
-        & span {
-          font-size: 14px;
-          color: #00000080;
-          text-align: center;
-          line-height: 100%;
-
-          @media (max-width: 768px) {
-            font-size: 12px; 
-            width: 80%;
-            text-align: left;
-          }
-        }
-      }
-    }
+      top: 0;
+      width: 100%;
+      background-color: var(--color--gray); /* Garante visibilidade no mobile */
   }
-  
+}
+
+.category-content {
+  width: 100%;
+  max-width: 1280px;
+  padding: 0 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
+
+  @media (max-width: 768px) {
+      flex-direction: column;
+      padding: 0;
+  }
+}
+
+.category-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 30px 20px;
+  border: 1px solid #00000020;
+  transition: border 0.3s ease-in-out, background 0.2s ease-in-out;
+  width: 100%;
+  cursor: pointer;
+  overflow: hidden;
+  z-index: 9999 !important; /* Garante que o clique no mobile não seja bloqueado */
+
+  @media (max-width: 768px) {
+      width: 100%;
+      padding: 10px 0;
+      height: 50px !important;
+      flex-direction: row;
+  }
+}
+
+.category-item:hover,
+.category-item.active {
+  background-color: var(--color--yellow);
+  border: 1px solid #000;
+}
+
+.category-item:hover svg,
+.category-item.active svg {
+  fill: #000000;
+}
+
+.category-item:hover span,
+.category-item.active span {
+  color: #000000;
+}
+
+.category-item svg {
+  width: 60px;
+  fill: #00000080;
+
+  @media (max-width: 768px) {
+      width: 30px;
+  }
+}
+
+.category-item span {
+  font-size: 14px;
+  color: #00000080;
+  text-align: center;
+
+  @media (max-width: 768px) {
+      font-size: 12px;
+      width: 80%;
+      text-align: left;
+  }
+}
