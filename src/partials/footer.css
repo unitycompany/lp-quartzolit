@@ -229,6 +229,7 @@
                     border: 2px solid var(--color--black);
                     font-size: 18px;
                     font-weight: 400;
+                    color: var(--color--black);
 
                     @media (max-width: 768px) {
                         border-radius: 10px;
