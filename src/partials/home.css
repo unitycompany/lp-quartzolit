@@ -154,6 +154,7 @@
 
     & .home-carrossel {
         width: 100%;
+        max-width: 1280px;
         overflow: hidden;
         position: relative;
         height: 550px;
