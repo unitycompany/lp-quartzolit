@@ -1,49 +1,68 @@
 document.addEventListener('DOMContentLoaded', function () {
     const categoryContainer = document.querySelector('.category');
-    const footer = document.querySelector('.footer'); // Captura o footer
+    const footer = document.querySelector('footer');
+
+    function scrollToSection(targetId) {
+        const targetSection = document.getElementById(targetId);
+
+        if (targetSection) {
+            console.log(`📌 Scroll inicial para: ${targetId}`);
+
+            // Primeira tentativa de rolagem
+            window.scrollTo({
+                top: targetSection.offsetTop - 20,
+                behavior: 'smooth'
+            });
+
+            // Segunda tentativa, após um pequeno atraso, para corrigir possíveis mudanças de altura
+            setTimeout(() => {
+                console.log(`🔄 Ajuste final do scroll para: ${targetId}`);
+                window.scrollTo({
+                    top: targetSection.offsetTop - 20,
+                    behavior: 'smooth'
+                });
+            }, 300); // Pequeno delay para corrigir possíveis mudanças na altura
+        } else {
+            console.warn(`⚠ Seção não encontrada: ${targetId}`);
+        }
+    }
+
+    function handleCategoryClick(event) {
+        console.log('➡ Clique detectado:', event.target);
+        let item = event.target.closest('.category-item');
+
+        if (item) {
+            console.log('✅ Categoria clicada:', item);
+
+            // Remover a classe 'active' de todas as categorias e adicionar na clicada
+            document.querySelectorAll('.category-item').forEach(el => el.classList.remove('active'));
+            item.classList.add('active');
+
+            const targetId = item.getAttribute('data-target');
+            if (targetId) {
+                // Atualizar a URL sem recarregar a página
+                history.pushState(null, null, `#${targetId}`);
+                scrollToSection(targetId);
+            }
+        } else {
+            console.warn('⚠ Clique detectado, mas não encontrou `.category-item`');
+        }
+    }
 
     if (categoryContainer) {
-        function handleCategoryClick(event) {
-            console.log('➡ Clique detectado:', event.target);
-
-            let item = event.target.closest('.category-item');
-
-            if (item) {
-                console.log('✅ Categoria clicada:', item);
-
-                // Remover a classe 'active' de todas as categorias e adicionar na clicada
-                document.querySelectorAll('.category-item').forEach(el => el.classList.remove('active'));
-                item.classList.add('active');
-
-                // Obter a seção alvo
-                const targetId = item.getAttribute('data-target');
-                if (targetId) {
-                    const targetSection = document.getElementById(targetId);
-                    if (targetSection) {
-                        console.log('📌 Scrolling para:', targetId);
-
-                        // Atualizar a URL sem recarregar a página
-                        history.pushState(null, null, `#${targetId}`);
-
-                        setTimeout(() => {
-                            window.scrollTo({
-                                top: targetSection.offsetTop - 20, // Ajuste para compensar header sticky
-                                behavior: 'smooth'
-                            });
-                        }, 100);
-                    } else {
-                        console.warn('⚠ Seção alvo não encontrada:', targetId);
-                    }
-                }
-            } else {
-                console.warn('⚠ Clique detectado, mas não encontrou `.category-item`');
-            }
-        }
-
-        // Teste se os eventos estão disparando no mobile
         categoryContainer.addEventListener('click', handleCategoryClick);
         categoryContainer.addEventListener('touchstart', handleCategoryClick, { passive: true });
     }
+
+    // Aplicar essa mesma correção para QUALQUER botão que direcione para uma seção
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (event) {
+            event.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            history.pushState(null, null, `#${targetId}`);
+            scrollToSection(targetId);
+        });
+    });
 
     // Intersection Observer para ativar a categoria quando a seção estiver visível
     const sections = document.querySelectorAll('section');
@@ -58,7 +77,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 const targetCategory = document.querySelector(`.category-item[data-target="${sectionId}"]`);
                 if (targetCategory) {
                     targetCategory.classList.add('active');
-                    // Atualizar URL quando a seção entrar na tela
                     history.replaceState(null, null, `#${sectionId}`);
                 }
             }
@@ -74,42 +92,11 @@ document.addEventListener('DOMContentLoaded', function () {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     console.log('🛑 Entrou no footer, removendo # da URL');
-                    history.replaceState(null, null, window.location.pathname); // Remove o hash
+                    history.replaceState(null, null, window.location.pathname);
                 }
             });
-        }, { threshold: 0.5 }); // 50% do footer visível já remove a URL
+        }, { threshold: 0.5 });
 
         footerObserver.observe(footer);
-    }
-
-    // Verificar compatibilidade de scroll no iOS e aplicar fallback
-    function isSmoothScrollSupported() {
-        let isSupported = false;
-        try {
-            document.createElement("div").scrollIntoView({ behavior: "smooth" });
-            isSupported = true;
-        } catch (err) {
-            isSupported = false;
-        }
-        return isSupported;
-    }
-
-    if (!isSmoothScrollSupported()) {
-        console.warn("⚠ Smooth Scroll não suportado, ativando fallback");
-        categoryContainer.addEventListener('click', function (event) {
-            let item = event.target.closest('.category-item');
-            if (item) {
-                const targetId = item.getAttribute('data-target');
-                if (targetId) {
-                    const targetSection = document.getElementById(targetId);
-                    if (targetSection) {
-                        window.scrollTo({
-                            top: targetSection.offsetTop - 20,
-                            behavior: 'auto'
-                        });
-                    }
-                }
-            }
-        });
     }
 });
