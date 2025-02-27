@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     const categoryContainer = document.querySelector('.category');
+    const footer = document.querySelector('.footer'); // Captura o footer
 
     if (categoryContainer) {
         function handleCategoryClick(event) {
@@ -20,7 +21,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     const targetSection = document.getElementById(targetId);
                     if (targetSection) {
                         console.log('📌 Scrolling para:', targetId);
-                        
+
+                        // Atualizar a URL sem recarregar a página
+                        history.pushState(null, null, `#${targetId}`);
+
                         setTimeout(() => {
                             window.scrollTo({
                                 top: targetSection.offsetTop - 20, // Ajuste para compensar header sticky
@@ -54,6 +58,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 const targetCategory = document.querySelector(`.category-item[data-target="${sectionId}"]`);
                 if (targetCategory) {
                     targetCategory.classList.add('active');
+                    // Atualizar URL quando a seção entrar na tela
+                    history.replaceState(null, null, `#${sectionId}`);
                 }
             }
         });
@@ -61,6 +67,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const observer = new IntersectionObserver(observerCallback, observerOptions);
     sections.forEach(section => observer.observe(section));
+
+    // Remover o hash da URL ao entrar no footer
+    if (footer) {
+        const footerObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    console.log('🛑 Entrou no footer, removendo # da URL');
+                    history.replaceState(null, null, window.location.pathname); // Remove o hash
+                }
+            });
+        }, { threshold: 0.5 }); // 50% do footer visível já remove a URL
+
+        footerObserver.observe(footer);
+    }
 
     // Verificar compatibilidade de scroll no iOS e aplicar fallback
     function isSmoothScrollSupported() {
