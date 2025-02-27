@@ -174,11 +174,17 @@
 }
 
 .image-carrossel-1{
-    background-color: #dddddd;
+    background-image: url(../assets/banners-home/argamassa.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .image-carrossel-2{
-    background-color: #c0c0c0;
+    background-image: url(../assets/banners-home/impermeabilizantes.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .image-carrossel-3{
