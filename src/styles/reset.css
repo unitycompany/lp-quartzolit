@@ -92,8 +92,4 @@
     border-spacing: 0;
   }
   
-  /* Ocultar scrollbar no iOS */
-  ::-webkit-scrollbar {
-    display: none;
-  }
   

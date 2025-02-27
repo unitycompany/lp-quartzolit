@@ -174,22 +174,44 @@
     }
 }
 
-.image-carrossel-1{
-    background-image: url(../assets/banners-home/argamassa.jpg);
+.image-carrossel-3{
+    background-image: url(../assets/banners-home/impermeabilizantes.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    cursor: pointer;
+}
+
+.image-carrossel-4{
+    background-image: url(../assets/banners-home/argamassas.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+}
+
+.image-carrossel-1{
+    background-image: url(../assets/banners-home/adesivos.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
 }
 
 .image-carrossel-2{
-    background-image: url(../assets/banners-home/impermeabilizantes.jpg);
+    background-image: url(../assets/banners-home/pisos.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    cursor: pointer;
 }
 
-.image-carrossel-3{
-    background-color: #f5f5f5;
+.image-carrossel-5{
+    background-image: url(../assets/banners-home/texturas.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
 }
 
 /* Estilo dos botões do swiper */

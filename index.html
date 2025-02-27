@@ -87,13 +87,19 @@
 
         <main class="home-carrossel swiper" data-aos="fade-up">
             <div class="swiper-wrapper">
-                <div class="home-card swiper-slide image-carrossel-1">
+                <div class="home-card swiper-slide image-carrossel-1" onclick="location.href='#adesivos'">
                     
                 </div>
-                <div class="home-card swiper-slide image-carrossel-2">
+                <div class="home-card swiper-slide image-carrossel-2" onclick="location.href='#pisos'">
                     
                 </div>
-                <div class="home-card swiper-slide image-carrossel-3">
+                <div class="home-card swiper-slide image-carrossel-3" onclick="location.href='#impermeabilizante'">
+                    
+                </div>
+                <div class="home-card swiper-slide image-carrossel-4" onclick="location.href='#argamassa'">
+                    
+                </div>
+                <div class="home-card swiper-slide image-carrossel-5" onclick="location.href='#texturas'">
                     
                 </div>
             </div>
@@ -497,7 +503,7 @@
                             <span>Ação<br>antifungos</span>
                         </div>
                     </div>
-                    <button class="button-type-cards3" data-target="contactForm" data-aos="fade-up" data-aos-delay="200">
+                    <button class="button-type-cards3" data-target="contactForm" data-aos="fade-up" data-aos-delay="200" id="adesivos&selantes">
                         <span>Solicitar orçamento</span>
                         <svg enable-background="new 0 0 24 24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="fi_8088410"><g id="Layer_1"><path d="m1.5 12.499h19.637l-6.953 5.61c-.215.173-.248.488-.074.703.173.216.488.249.703.075l7.97-6.431c.025-.02.217-.182.217-.457 0-.276-.194-.438-.219-.458l-7.969-6.43c-.214-.172-.531-.138-.703.075s-.139.53.074.703l6.953 5.61h-19.636c-.276 0-.5.224-.5.5s.223.5.5.5z"></path></g></svg>
                     </button>
@@ -673,131 +679,7 @@
 
     <!-- Scripts -->
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const formElement = document.querySelector('#contactForm');
-            const submitButton = formElement.querySelector("button[type='submit']");
-            let clickedButtonId = ''; // Variável para armazenar o ID do botão clicado
-        
-            // Captura todos os botões que direcionam para o formulário
-            document.querySelectorAll('[data-target="contactForm"]').forEach(button => {
-                button.addEventListener('click', function (event) {
-                    event.preventDefault();
-                    clickedButtonId = this.id || 'botao-sem-id'; // Guarda o ID do botão
-                    
-                    // Faz o scroll suave até o formulário
-                    document.querySelector('#contactForm').scrollIntoView({ behavior: 'smooth' });
-                });
-            });
-        
-            formElement.addEventListener('submit', function (event) {
-                event.preventDefault();
-        
-                const name = formElement.querySelector('#name').value.trim();
-                const email = formElement.querySelector('#email').value.trim();
-                const whatsapp = formElement.querySelector('#tel').value.trim();
-        
-                // Validação básica
-                if (!name || !email || !whatsapp) {
-                    alert("Por favor, preencha todos os campos corretamente.");
-                    return;
-                }
-        
-                // Desativar o botão de envio
-                submitButton.disabled = true;
-        
-                // Exibir overlay de carregamento (caso queira colocar)
-                displayLoadingOverlay(true);
-        
-                // Captura de UTM
-                const utms = getUTMs();
-                const pageReferrer = window.location.href || 'URL não encontrada';
-        
-                // Montagem do payload
-                const payload = {
-                    rules: {
-                        update: "false",
-                        filter_status_update: "open",
-                        equal_pipeline: "true",
-                        status: "open",
-                        validate_cpf: "false",
-                    },
-                    leads: [
-                        {
-                            id: `FORMULARIO - ${clickedButtonId} - QUARTZOLIT - ${name}`,
-                            user: name,
-                            email: email,
-                            name: name,
-                            personal_phone: whatsapp,
-                            mobile_phone: whatsapp,
-                            last_conversion: {
-                                source: `FORMULARIO - ${clickedButtonId} - QUARTZOLIT`
-                            },
-                            custom_fields: {
-                                uniqueId: generateUniqueId(),
-                                utm_source: utms.utm_source || "",
-                                utm_medium: utms.utm_medium || "",
-                                utm_campaign: utms.utm_campaign || "",
-                                utm_content: utms.utm_content || "",
-                                utm_term: utms.utm_term || "",
-                                page_referrer: pageReferrer,
-                                button_id: clickedButtonId // Inclui o ID do botão que acionou o formulário
-                            }
-                        }
-                    ]
-                };
-        
-                // Envio via fetch
-                fetch('https://app.pipe.run/webservice/integradorJson?hash=1e28b707-3c02-4393-bb9d-d3826b060dcd', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(payload)
-                })
-                .then(response => response.json())
-                .then(data => {
-                    console.log('Success:', data);
-                    displayLoadingOverlay(false);
-                    alert('Formulário enviado com sucesso!');
-                    formElement.reset();
-                    clickedButtonId = ''; // Reseta o ID do botão após envio
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                    alert('Houve um erro ao enviar o formulário.');
-                })
-                .finally(() => {
-                    // Reativar o botão de envio
-                    submitButton.disabled = false;
-                    displayLoadingOverlay(false);
-                });
-            });
-        
-            function generateUniqueId() {
-                return new Date().getTime().toString();
-            }
-        
-            function getUTMs() {
-                const urlParams = new URLSearchParams(window.location.search);
-                return {
-                    utm_source: urlParams.get('utm_source'),
-                    utm_medium: urlParams.get('utm_medium'),
-                    utm_campaign: urlParams.get('utm_campaign'),
-                    utm_content: urlParams.get('utm_content'),
-                    utm_term: urlParams.get('utm_term'),
-                };
-            }
-        
-            function displayLoadingOverlay(show) {
-                if (show) {
-                    console.log("Mostrando overlay de carregamento...");
-                } else {
-                    console.log("Removendo overlay de carregamento...");
-                }
-            }
-        });
-    </script>
+    <script src="src/scripts/Form.js"></script>
         
     <script>
         AOS.init({
