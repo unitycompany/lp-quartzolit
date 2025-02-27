@@ -112,6 +112,10 @@
                     position: relative;
                     width: 85%;
 
+                    & p b{
+                        font-weight: 500;
+                    }
+
                     &::before{
                         content: '';
                         width: 120%;

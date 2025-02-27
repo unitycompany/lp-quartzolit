@@ -127,6 +127,7 @@
                 background-color: var(--color--white);
                 padding: 5px;
                 border-radius: 10px;
+                z-index: 2;
 
                 @media (max-width: 768px) {
                     display: none;
@@ -140,6 +141,10 @@
                 justify-content: center;
                 gap: 15px;
                 position: relative;
+
+                & b {
+                    font-weight: 500;
+                }
 
                 &::before{
                     content: '';

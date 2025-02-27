@@ -284,6 +284,10 @@
                     justify-content: center;
                     gap: 15px;
                     flex-direction: column;
+
+                    & b {
+                        font-weight: 500;
+                    }
                     
                     @media (max-width: 768px) {
                         padding-top: 20px;
