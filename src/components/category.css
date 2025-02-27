@@ -12,7 +12,7 @@
       position: relative;
       top: 0;
       width: 100%;
-      background-color: var(--color--gray); /* Garante visibilidade no mobile */
+      background-color: var(--color--gray);
   }
 }
 
@@ -44,7 +44,9 @@
   width: 100%;
   cursor: pointer;
   overflow: hidden;
-  z-index: 9999 !important; /* Garante que o clique no mobile não seja bloqueado */
+  pointer-events: auto !important; /* Garante que está recebendo clique */
+  z-index: 9999 !important;
+  position: relative;
 
   @media (max-width: 768px) {
       width: 100%;
