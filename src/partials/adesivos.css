@@ -75,7 +75,7 @@
                 opacity: 0.95;
 
                 & img:nth-child(1) {
-                    width: 45px;
+                    width: 125px;
                     line-height: 100%;
                 }
             }
@@ -83,7 +83,7 @@
             & span:nth-child(2){
 
                 & img {
-                    width: 120px;
+                    width: 50px;
                 }
             }
         }
